@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    // Node backend básico
+    "target": "ES2020",
+    "module": "commonjs",
+    "moduleResolution": "node",
+
+    // Pastas
+    "rootDir": "src",
+    "outDir": "dist",
+
+    // Qualidade de vida
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "noImplicitAny": false,
+  },
+  "include": ["src"]
+}
