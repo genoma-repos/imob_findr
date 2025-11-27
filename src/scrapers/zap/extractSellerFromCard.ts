@@ -73,7 +73,7 @@ export async function extractSellerFromCard(
     const count = match ? Number(match[1]) : null;
 
     // Aqui eu só marco como deduplicado e deixo os campos de vendedor nulos.
-    // Mais tarde você pode criar uma rotina específica pra entrar no dedup
+    // Mais tarde podemos criar uma rotina específica pra entrar no dedup
     // e pegar cada anúncio separadamente.
     return {
       sellerName: null,

@@ -31,4 +31,6 @@ export type ZapPropertyCard = {
   areaM2: number | null;
   bedrooms: number | null;
   bathrooms: number | null;
+  neighborhood: string; // "Botafogo"
+  city: string; // "Rio de Janeiro"
 };

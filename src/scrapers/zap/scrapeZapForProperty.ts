@@ -111,6 +111,8 @@ export async function scrapeZapForProperty(
         areaM2,
         bedrooms,
         bathrooms,
+        neighborhood: property.neighborhood,
+        city: property.city,
       });
     }
 

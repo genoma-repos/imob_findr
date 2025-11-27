@@ -44,6 +44,8 @@ async function upsertAdvertiser(card: ZapPropertyCard) {
  */
 async function upsertZapListing(card: ZapPropertyCard, advertiserId: number | null) {
   const price = parsePrice(card.priceNumber);
+  console.log(card);
+  
 
   // Em muitos casos o href vem relativo, então prefixamos
   const url = card.href?.startsWith('http')
@@ -63,10 +65,10 @@ async function upsertZapListing(card: ZapPropertyCard, advertiserId: number | nu
         url,
         source_listing_id: card.zapCode ?? null,
         title: card.title,
-        street: card.streetText || null,
-        // por enquanto não quebramos locationText em bairro/cidade aqui
-        neighborhood: null,
-        city: null,
+        street: card.streetText || null,        
+
+        neighborhood: card.neighborhood || null,
+        city: card.neighborhood || null,
         price,
         advertiser_id: advertiserId,
         area_m2: card.areaM2 ?? null,
@@ -295,7 +297,10 @@ export async function saveZapResultsForProperty(
     return;
   }
 
-  for (const card of zapCards) {
+  for (const card of zapCards.filter(c => 
+    c.href &&
+    c.streetText
+  )) {
     try {
       const advertiserId = card.sellerName
         ? await upsertAdvertiser(card)
